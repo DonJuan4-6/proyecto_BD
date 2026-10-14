@@ -148,6 +148,11 @@ textarea {
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
 input:focus,
 textarea:focus {
     border-color: #2563eb;
@@ -186,6 +191,7 @@ textarea:focus {
 }
 
 .btn-cancelar {
+    flex: 1;
     background-color: #e2e8f0;
     color: #475569;
 }
@@ -290,6 +296,53 @@ textarea:focus {
     gap: 15px;
 }
 
+.panel-contacto {
+    display: grid;
+    grid-template-columns: minmax(300px, 360px) minmax(0, 1fr);
+    gap: 25px;
+    align-items: start;
+}
+
+.lista-contactos {
+    display: grid;
+    gap: 15px;
+}
+
+.contacto {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-wrap: anywhere;
+}
+
+.contacto h3 {
+    color: #0f172a;
+    margin-bottom: 6px;
+}
+
+.contacto p {
+    color: #64748b;
+    font-size: 0.9rem;
+    white-space: pre-wrap;
+}
+
+.contacto .contacto-fecha {
+    color: #334155;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.estado-contactos {
+    color: #475569;
+    margin-bottom: 12px;
+}
+
+
+
 /* --- Pie de Página (Footer) --- */
 .footer {
     background-color: #0f172a;
@@ -307,6 +360,10 @@ textarea:focus {
     }
 
     .fila-contacto {
+        grid-template-columns: 1fr;
+    }
+
+    .panel-contacto {
         grid-template-columns: 1fr;
     }
 
