@@ -80,6 +80,7 @@ async function cargarProductos() {
         });
     } catch (error) {
         console.error("Error al cargar productos:", error);
+        listaProductos.textContent = `No se pudieron cargar los productos: ${error.message}`;
     }
 }
 
@@ -122,24 +123,31 @@ if (formulario) {
     try {
       if (id) {
         // MODO ACTUALIZAR (PUT)
-        await fetch(`${API_URL}/productos/${id}`, {
+        const respuesta = await fetch(`${API_URL}/productos/${encodeURIComponent(id)}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ nombre, precio, stock }),
         });
+        if (!respuesta.ok) {
+          throw new Error(`No se pudo actualizar el producto (${respuesta.status})`);
+        }
       } else {
         // MODO CREAR (POST)
-        await fetch(`${API_URL}/productos`, {
+        const respuesta = await fetch(`${API_URL}/productos`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ nombre, precio, stock }),
         });
+        if (!respuesta.ok) {
+          throw new Error(`No se pudo crear el producto (${respuesta.status})`);
+        }
       }
 
       cancelarEdicion(); // Limpiar formulario y restaurar botones
-      cargarProductos(); // Refrescar la lista en pantalla
+      await cargarProductos(); // Refrescar la lista en pantalla
     } catch (error) {
       console.error("Error al guardar el producto:", error);
+      window.alert(`Error al guardar el producto: ${error.message}`);
     }
   });
 }
