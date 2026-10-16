@@ -21,7 +21,7 @@ const mysql = require("mysql2");
 // Si el host es remoto (TiBD Cloud), habilitar el SSL automaticamente
 if (host !== "localhost" && host !== "127.0.0.1"){
     configuracion.ssl = {
-        minVersion: "TLSV1.2",
+        minVersion: "TLSv1.2",
         rejectUnauthorized: true,
     };
 }
