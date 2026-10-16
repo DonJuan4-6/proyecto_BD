@@ -8,6 +8,14 @@ const app = express();
 app.use(cors()); // Permite recibir peticiones desde el frontend
 app.use(express.json()); // Habilitar la lectra de datos en formato JSON
 
+const cors = require('cors');
+
+app.use(cors({
+    origin: 'https://proyectobd2-frontend-5un1.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 // Ruta de prueba
 app.get("/", (req, res) => {
     res.send("Servidor funcionando correctamente")
