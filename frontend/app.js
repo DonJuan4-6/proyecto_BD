@@ -1,4 +1,4 @@
-const API_URL = "https://proyecto-bd2-glj0.onrender.com";
+const API_URL = "https://proyecto-bd2-8y1j.onrender.com";
 
 // ELEMENTOS DEL DOM
 const listaProductos = document.getElementById("listaProductos");
